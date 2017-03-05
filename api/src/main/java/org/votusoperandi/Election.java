@@ -26,4 +26,8 @@ public class Election extends AbstractPersistable<Long> {
         this.options = Arrays.stream(options).map(ElectionOption::new).collect(Collectors.toList());
     }
 
+    public List<ElectionOption> getOptions(){
+        return options;
+    }
+
 }

@@ -15,7 +15,7 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
   {
     "id": 1,
     "subject": "Quel est votre couleur préférée ?",
-    "options": [
+    "propositions": [
       {
         "id": 1,
         "description": "noir",
@@ -32,7 +32,7 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
   {
     "id": 2,
     "subject": "Quel est votre candidat-e préféré-e ?",
-    "options": [
+    "propositions": [
       {
         "id": 5,
         "description": "Jacques",
@@ -54,7 +54,7 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
 * Body:
 ```json
   {"subject": "Comment ça va ?", 
-  "options": 
+  "propositions": 
     [{"description": "bien"},
     {"description": "bienbien"}
     ] }
@@ -63,7 +63,7 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
 * Result:
 ```json
   {"subject": "Comment ça va ?", 
-  "options": 
+  "propositions": 
     [{"description": "bien"},
     {"description": "bienbien"}
     ],

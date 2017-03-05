@@ -1,4 +1,4 @@
-package org.votusoperandi;
+package org.votusoperandi.domain;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -9,16 +9,16 @@ import javax.persistence.ManyToOne;
 public class MajorityVote extends AbstractPersistable<Long> {
 
     @ManyToOne
-    private ElectionOption selectedOption;
+    private Proposition selectedProposition;
 
     public MajorityVote(){}
 
-    public MajorityVote(ElectionOption selected) {
-        this.selectedOption = selected;
+    public MajorityVote(Proposition selected) {
+        this.selectedProposition = selected;
     }
 
-    public ElectionOption getSelectedOption(){
-        return selectedOption;
+    public Proposition getSelectedProposition(){
+        return selectedProposition;
     }
 
 }

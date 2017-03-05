@@ -1,4 +1,4 @@
-package org.votusoperandi;
+package org.votusoperandi.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -13,21 +13,33 @@ import java.util.stream.Collectors;
 
 @Entity
 public class Election extends AbstractPersistable<Long> {
+
     @JsonProperty
     private String subject;
+
+    @JsonProperty
+    private boolean closed = false;
+
     @JsonProperty
     @OneToMany(cascade = CascadeType.ALL)
-    private List<ElectionOption> options = new ArrayList<>();
+    private List<Proposition> propositions = new ArrayList<>();
 
     public Election(){}
 
-    public Election(String subject, String...options) {
+    public Election(String subject, String... propositions) {
         this.subject = subject;
-        this.options = Arrays.stream(options).map(ElectionOption::new).collect(Collectors.toList());
+        this.propositions = Arrays.stream(propositions).map(Proposition::new).collect(Collectors.toList());
     }
 
-    public List<ElectionOption> getOptions(){
-        return options;
+    public List<Proposition> getPropositions(){
+        return propositions;
     }
 
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void updateWith(Election modified) {
+        this.closed = modified.isClosed();
+    }
 }

@@ -1,9 +1,7 @@
 package org.votusoperandi;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -11,7 +9,6 @@ public class ElectionController {
 
     @Autowired
     private ElectionRepository electionRepository;
-
 
     @RequestMapping("/election/{id}")
     public Election findOne(@PathVariable Long id){
@@ -23,5 +20,10 @@ public class ElectionController {
     @RequestMapping("/election")
     public Iterable<Election> findAll(){
         return electionRepository.findAll();
+    }
+
+    @RequestMapping(value = "/election", method = RequestMethod.POST)
+    public Election create(@RequestBody Election election){
+        return electionRepository.save(election);
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.votusoperandi.domain.Election;
 import org.votusoperandi.domain.Proposition;
 import org.votusoperandi.domain.Vote;
+import org.votusoperandi.dto.ElectionResult;
 import org.votusoperandi.repository.ElectionRepository;
 import org.votusoperandi.repository.VoteRepository;
 
@@ -33,6 +34,14 @@ public class ElectionController {
         election.updateWith(modified);
         electionRepository.save(election);
         return election;
+    }
+
+    @RequestMapping("/election/{id}/result")
+    public ElectionResult getResult(@PathVariable Long id){
+        Election election = getElectionOrThrowException(id);
+
+        List<Vote> votes = voteRepository.findByElectionId(id);
+        return ElectionResult.getResultForVotes(votes);
     }
 
     @RequestMapping(value = "/election/{electionId}/vote", method = RequestMethod.POST)

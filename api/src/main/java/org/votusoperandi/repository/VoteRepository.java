@@ -1,9 +1,9 @@
 package org.votusoperandi.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import org.votusoperandi.domain.MajorityVote;
+import org.votusoperandi.domain.Vote;
 
-public interface VoteRepository extends CrudRepository<MajorityVote, Long> {
+public interface VoteRepository extends CrudRepository<Vote, Long> {
 
 
 

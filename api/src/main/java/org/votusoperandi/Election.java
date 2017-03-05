@@ -23,7 +23,7 @@ public class Election extends AbstractPersistable<Long> {
 
     public Election(String subject, String...options) {
         this.subject = subject;
-        this.options = Arrays.asList(options).stream().map(s -> new ElectionOption (s)).collect(Collectors.toList());
+        this.options = Arrays.stream(options).map(ElectionOption::new).collect(Collectors.toList());
     }
 
 }

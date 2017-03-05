@@ -16,9 +16,9 @@ public class Application {
     private static void initDatas(ConfigurableApplicationContext context) {
         ElectionRepository repository = context.getBean(ElectionRepository.class);
 
-        repository.save(new Election("Quel est votre couleur préférée ?", "noir", "marron", "vert", "auburn"));
-        repository.save(new Election("Quel est votre candidat-e préféré-e ?", "Jacques", "Nadine", "Aude", "Jimmy"));
-        repository.save(new Election("Quel est votre animal préféré ?", "éléphant", "souris", "pie"));
+        repository.save(new Election("Choix de la couleur", "Quel est votre couleur préférée ?", "noir", "marron", "vert", "auburn"));
+        repository.save(new Election("Choix du candidat", "Quel est votre candidat-e préféré-e ?", "Jacques", "Nadine", "Aude", "Jimmy"));
+        repository.save(new Election("Choix de l'animal","Quel est votre animal préféré ?", "éléphant", "souris", "pie"));
 
     }
 }

@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 public class Election extends AbstractPersistable<Long> {
 
     @JsonProperty
+    private String title;
+
+    @JsonProperty
     private String subject;
 
     @JsonProperty
@@ -26,7 +29,7 @@ public class Election extends AbstractPersistable<Long> {
 
     public Election(){}
 
-    public Election(String subject, String... propositions) {
+    public Election(String title, String subject, String... propositions) {
         this.subject = subject;
         this.propositions = Arrays.stream(propositions).map(Proposition::new).collect(Collectors.toList());
     }

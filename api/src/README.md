@@ -6,7 +6,7 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
 
 ### API Doc
 
-#### /election endpoint
+#### /election endpoint 
 
 ##### `GET` : Retrieves the list of all elections
 
@@ -49,7 +49,7 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
   
 ``` 
 
-#####`POST` : creates an election
+##### `POST` : creates an election
 
 * Body:
 ```json
@@ -69,3 +69,55 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
     ],
     "id": 42}
 ```
+
+
+#### /election/{id} endpoint
+
+`GET` and `PUT` method allowed.
+
+#### /election/{id}/result endpoint
+
+Retrieves an object describing election result. `items` is a map associating a `proposition id` to corresponding result:
+- `majorityVoteResult`: sum of citizens who gave "true" to this proposition
+- `scoringVoteResult`: sum of all scores for this proposition.
+
+```json
+{
+  "items": {
+    "1": {
+      "majorityVoteResult": 1,
+      "scoringVoteResult": 5
+    }
+  },
+  "users": [
+    "John"
+  ]
+}
+```
+
+
+#### Vote
+
+##### `POST`: store votes for an user
+
+```json
+[
+  {
+      "selectedProposition": {
+        "id": 1
+       },
+      "userName": "Filip",
+      "majorityVote": "true",
+      "scoreVote": 5
+    },
+    {
+      "selectedProposition": {
+        "id": 2
+      },
+      "userName": "Filip",
+      "majorityVote": "false",
+      "scoreVote": 2
+    }
+]
+```
+

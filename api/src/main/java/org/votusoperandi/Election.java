@@ -1,24 +1,27 @@
 package org.votusoperandi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
-public class Election {
-    private static final AtomicLong counter = new AtomicLong();
-    @JsonProperty
-    private Long id;
+@Entity
+public class Election extends AbstractPersistable<Long> {
     @JsonProperty
     private String subject;
     @JsonProperty
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ElectionOption> options = new ArrayList<>();
 
+    public Election(){}
+
     public Election(String subject, String...options) {
-        id = counter.incrementAndGet();
         this.subject = subject;
         this.options = Arrays.asList(options).stream().map(s -> new ElectionOption (s)).collect(Collectors.toList());
     }

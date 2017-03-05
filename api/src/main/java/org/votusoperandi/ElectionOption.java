@@ -1,19 +1,19 @@
 package org.votusoperandi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import java.util.concurrent.atomic.AtomicLong;
+import javax.persistence.Entity;
 
-public class ElectionOption {
-    private static final AtomicLong counter = new AtomicLong();
+@Entity
+public class ElectionOption extends AbstractPersistable<Long> {
 
-    @JsonProperty
-    private Long id;
     @JsonProperty
     private String description;
 
+    public ElectionOption() {}
+
     public ElectionOption(String s) {
-        id = counter.incrementAndGet();
         description = s;
     }
 }

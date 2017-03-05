@@ -1,6 +1,21 @@
+- v0 : mockups
 - v1 : implémentation scrutin uninominal à 1 tour + scrutin par jugement majoritaire
 - v2 : implémenter scrutin uninominal à 2 tours
 - v3 : implémenter d'autres modes de scrutin
+
+---
+# Vocabulaire
+
+- **Délibération** ou **Scrutin** : Action de soumettre une question à délibérer collectivement.
+  - *Exemple : élire un président / élire un délégué / élire le meilleur goût pour les BN*
+- **Candidats** : ce sont les différents choix ou candidats de la délibération.
+  - *Exemple : Macron, Fillon, Hamon, Mélenchon / goût fraise, goût chocolat, etc.*
+- **Participants** : ce sont les différents personnes qui participent à la délibération en votant pour un plusieurs candidats.
+  - *Exemple : Les citoyens en âge de voter et inscrits sur les listes électorales. / Les membres de la classe.*
+- **Mode de scrutin** : C'est le mécanisme de comptage des votes de la délibération.
+  - *Exemple : scrutin uninominal / plurinominal / jugement majoritaire / etc.*
+- **Vote** : action d'exprimer son choix ou ses préférences pour une délibération.
+  - *Exemple :*
 
 ---
 

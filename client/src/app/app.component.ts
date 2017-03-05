@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import {SelectItem} from "primeng/components/common/api";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-component',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'app works!';

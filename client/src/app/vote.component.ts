@@ -1,9 +1,8 @@
 import {Component} from "@angular/core";
 
 @Component({
-  selector: 'vote-root',
-  templateUrl: './vote.component.html',
-  styleUrls: ['./vote.component.css']
+  selector: 'vote-component',
+  templateUrl: './vote.component.html'
 })
 export class VoteComponent {
   title = 'vote!';

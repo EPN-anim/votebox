@@ -49,7 +49,7 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
   
 ``` 
 
-#####`POST` : creates an election
+##### `POST` : creates an election
 
 * Body:
 ```json
@@ -68,4 +68,29 @@ Launch `org.votusoperandi.Application` from your IDE or `mvn spring-boot:run` fr
     {"description": "bienbien"}
     ],
     "id": 42}
+```
+
+#### Vote
+
+##### `POST`: store votes for an user
+
+```json
+[
+  {
+      "selectedProposition": {
+        "id": 1
+       },
+      "userName": "Filip",
+      "majorityVote": "true",
+      "scoreVote": 5
+    },
+    {
+      "selectedProposition": {
+        "id": 2
+      },
+      "userName": "Filip",
+      "majorityVote": "false",
+      "scoreVote": 2
+    }
+]
 ```

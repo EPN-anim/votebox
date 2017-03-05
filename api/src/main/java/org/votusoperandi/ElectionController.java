@@ -8,6 +8,10 @@ import org.votusoperandi.domain.Vote;
 import org.votusoperandi.repository.ElectionRepository;
 import org.votusoperandi.repository.VoteRepository;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 
 @RestController
 public class ElectionController {
@@ -32,12 +36,17 @@ public class ElectionController {
     }
 
     @RequestMapping(value = "/election/{electionId}/vote", method = RequestMethod.POST)
-    public Vote vote(@PathVariable Long electionId, @RequestBody Vote userVote){
+    public Collection<Vote> vote(@PathVariable Long electionId, @RequestBody List<Vote> userVotes){
         Election result = getElectionOrThrowException(electionId);
-        Proposition selected = result.getPropositions().stream().filter(v -> v.getId().equals(userVote.getSelectedProposition().getId())).findFirst().orElseThrow(ResourceNotFoundException::new);
-        Vote vote = new Vote(selected);
-        vote.updateWith(userVote);
-        return voteRepository.save(vote);
+        Collection<Vote> votes = new ArrayList<>(userVotes.size());
+        for(Vote userVote:userVotes) {
+            Proposition selected = result.getPropositions().stream().filter(v -> v.getId().equals(userVote.getSelectedProposition().getId())).findFirst().orElseThrow(ResourceNotFoundException::new);
+            Vote vote = new Vote(selected);
+            vote.updateWith(userVote);
+            vote = voteRepository.save(vote);
+            votes.add(vote);
+        }
+        return votes;
     }
 
     private Election getElectionOrThrowException(Long electionId) {
